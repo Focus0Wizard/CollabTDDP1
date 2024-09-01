@@ -27,3 +27,13 @@ export const executeCommands = input => {
 
     return `${x},${y}${direction}`;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('executeButton').onclick = () => {
+        const input = document.getElementById('commandInput').value;
+        
+        const result = executeCommands(input);
+        
+        document.getElementById('output').innerText = `Posición Final: ${result}`;
+    };
+});
