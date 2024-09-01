@@ -1,14 +1,15 @@
-#### Para instalar las dependencias:
+#### Install dependencies:
 
-npm install
+npm install --save-dev jest 
+npm install parcel-bundler --save-dev
 
-#### Comandos de uso:
+#### Usage commands:
 
-Ejecutar web-sever local parcel:
+Execute web-sever local parcel:
 npm start
 
-Ejecutar pruebas de unidad de forma continua --watch:
+Run unit tests continuously --watch:
 npm test
 
-Ejecutar pruebas de unidad solo una vez:
+Run unit tests only once:
 npm run test-once
