@@ -1,15 +1,19 @@
-<html>
-  <body>
-    <h1>Primer Proyecto TDD </h1>
-    <form id="sumar-form">
-      <label for="primer-numero">Primer número:</label>
-      <input type="number" id="primer-numero" />
-      <label for="segundo-numero">Segundo número:</label>
-      <input type="number" id="segundo-numero" />
-      <input type="submit" value="Sumar" id="sumar-button" />
-    </form>
-    <div id="resultado-div"></div>
-
-    <script type="module" src="./src/presenter.js"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Autitos</title>
+</head>
+<body>
+    <h1>Simulador de Autitos</h1>
+    
+    <label for="commandInput">Ingrese los comandos:</label>
+    <input type="text" id="commandInput" placeholder="5,5/1,2N/IAIAIAIAA">
+    <button id="executeButton">Ejecutar</button>
+    
+    <p id="output">Posición Final: </p>
+    
+    <script src="script.js"></script>
+</body>
 </html>
