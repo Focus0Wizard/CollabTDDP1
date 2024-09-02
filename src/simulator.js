@@ -1,6 +1,7 @@
 import createGrid from './createGrid.js'
+import moveCar from './moveCar.js';
 
-export const executeCommands = (input, createGrid, gridContainer) => {
+export const executeCommands = (input, createGrid, moveCar, gridContainer) => {
     const [gridSize, startPosition, commands] = input.split('/');
     const [maxX, maxY] = gridSize.split(',').map(Number);
     let [x, y, direction] = [parseInt(startPosition[0]), parseInt(startPosition[2]), startPosition[3]];
@@ -13,7 +14,7 @@ export const executeCommands = (input, createGrid, gridContainer) => {
         'O': { dx: -1, dy: 0 }
     };
 
-    createGrid(maxX , maxY, gridContainer);
+    createGrid(maxX + 1 , maxY + 1, gridContainer);
 
     for (let command of commands) {
         if (command === 'I') direction = directions[(directions.indexOf(direction) + 3) % 4];
@@ -27,6 +28,7 @@ export const executeCommands = (input, createGrid, gridContainer) => {
                 y = newY;
             }
         }
+        moveCar(x, y, maxY+1)
     }
 
     return `${x},${y}${direction}`;
@@ -38,6 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('executeButton').onclick = () => {
         const input = document.getElementById('commandInput').value;
-        executeCommands(input, createGrid, gridContainer);
+        const result = executeCommands(input, createGrid, moveCar, gridContainer); 
+
+        document.getElementById('output').innerText = `Posición Final: ${result}`;   
     };
+
 });
