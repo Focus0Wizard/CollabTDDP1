@@ -1,6 +1,5 @@
-import { executeCommands } from './simulator.js';
-import createGrid from './createGrid.js';
-import moveCar from './moveCar.js';
+import { createGrid, moveCar, executeCommands } from './index';
+
 
 document.body.innerHTML = '<div id="grid-container"></div>';
 const gridContainer = document.getElementById('grid-container');
