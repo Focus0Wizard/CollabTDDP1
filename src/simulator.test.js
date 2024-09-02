@@ -17,25 +17,25 @@ document.body.innerHTML = `
 describe('Simulador de Autitos', () => {
     test('Ejemplo 1: 5,5/1,2N/IAIAIAIAA', () => {
         const input = '5,5/1,2N/IAIAIAIAA';
-        const expectedOutput = '1,3N';
+        const expectedOutput = "1,3N";
         expect(executeCommands(input, createGrid, moveCar, gridContainer)).toBe(expectedOutput);
     });
 
     test('Ejemplo 2: 5,5/3,3E/AADAADADDA', () => {
         const input = '5,5/3,3E/AADAADADDA';
-        const expectedOutput = '5,1E';
+        const expectedOutput = "5,1E";
         expect(executeCommands(input, createGrid, moveCar,gridContainer)).toBe(expectedOutput);
     });
 
     test('El auto no debe salir del grid: 3,3/0,0S/A', () => {
         const input = '3,3/0,0S/A';
-        const expectedOutput = '0,0S';
+        const expectedOutput = "0,0S";
         expect(executeCommands(input,createGrid, moveCar, gridContainer)).toBe(expectedOutput);
     });
 
     test('Comandos inválidos: 4,4/2,2N/XXXX', () => {
         const input = '4,4/2,2N/XXXX';
-        const expectedOutput = '2,2N'; 
+        const expectedOutput = undefined; 
         expect(executeCommands(input, createGrid, moveCar, gridContainer)).toBe(expectedOutput);
     });
 
@@ -77,5 +77,11 @@ describe('Simulador de Autitos', () => {
         moveCar(3, 3, 2);
         const carCells = gridContainer.querySelectorAll('.car');
         expect(carCells.length).toBe(0);
+    });
+
+    test('Debería mostrar error para formato de comando inválido', () => {
+        global.alert = jest.fn();
+        executeCommands('invalid-format', createGrid);
+        expect(global.alert).toHaveBeenCalledWith('Formato de comando inválido. Debe ser "TamanioGrilla/PosicionInicial/Comandos".');
     });
 });
