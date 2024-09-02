@@ -1,5 +1,4 @@
-
-function moveCar(x, y, gridSize) {
+export const moveCar = (x, y, gridSize) => {
     document.querySelectorAll('.cell').forEach(cell => cell.classList.remove('car'));
         
     // Ajustar la posición para que (0,0) esté en la esquina inferior izquierda
@@ -10,5 +9,3 @@ function moveCar(x, y, gridSize) {
         carCell.innerHTML = '🏎️';
     }
 }
-
-export default moveCar;

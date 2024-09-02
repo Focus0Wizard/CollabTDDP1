@@ -1,5 +1,4 @@
-
-function createGrid(columns, rows, gridContainer) {
+export const createGrid = (columns, rows, gridContainer) => {
     gridContainer.innerHTML = '';
     gridContainer.style.gridTemplateColumns = `repeat(${columns}, 50px)`;
     gridContainer.style.gridTemplateRows = `repeat(${rows}, 50px)`;
@@ -12,5 +11,3 @@ function createGrid(columns, rows, gridContainer) {
         }
     }
 }
-
-export default createGrid 

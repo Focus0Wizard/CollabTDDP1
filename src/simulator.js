@@ -1,5 +1,5 @@
-import createGrid from './createGrid.js'
-import moveCar from './moveCar.js';
+import { createGrid } from './createGrid.js'
+import { moveCar } from './moveCar.js';
 
 export const executeCommands = (input, createGrid, moveCar, gridContainer) => {
     const regex = /^(\d+,\d+)\/(\d+),(\d+)([NSEO])\/([IDAS]*)$/;
@@ -28,11 +28,9 @@ export const executeCommands = (input, createGrid, moveCar, gridContainer) => {
     createGrid(maxX + 1 , maxY + 1, gridContainer);
 
     for (let command of commands) {
-        if (command === 'I') {
-            direction = directions[(directions.indexOf(direction) + 3) % 4];
-        }else if (command === 'D'){
-            direction = directions[(directions.indexOf(direction) + 1) % 4];
-        }else if (command === 'A') {
+        if (command === 'I') direction = directions[(directions.indexOf(direction) + 3) % 4];
+        else if (command === 'D') direction = directions[(directions.indexOf(direction) + 1) % 4];
+        else if (command === 'A') {
             const newX = x + movements[direction].dx;
             const newY = y + movements[direction].dy;
 
