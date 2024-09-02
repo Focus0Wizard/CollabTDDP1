@@ -1,4 +1,6 @@
-export const executeCommands = input => {
+import createGrid from './createGrid.js'
+
+export const executeCommands = (input, createGrid, gridContainer) => {
     const [gridSize, startPosition, commands] = input.split('/');
     const [maxX, maxY] = gridSize.split(',').map(Number);
     let [x, y, direction] = [parseInt(startPosition[0]), parseInt(startPosition[2]), startPosition[3]];
@@ -10,6 +12,8 @@ export const executeCommands = input => {
         'S': { dx: 0, dy: -1 },
         'O': { dx: -1, dy: 0 }
     };
+
+    createGrid(maxX , maxY, gridContainer);
 
     for (let command of commands) {
         if (command === 'I') direction = directions[(directions.indexOf(direction) + 3) % 4];
@@ -28,12 +32,12 @@ export const executeCommands = input => {
     return `${x},${y}${direction}`;
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
+    const gridContainer = document.getElementById('grid-container');
+
     document.getElementById('executeButton').onclick = () => {
         const input = document.getElementById('commandInput').value;
-        
-        const result = executeCommands(input);
-        
-        document.getElementById('output').innerText = `Posición Final: ${result}`;
+        executeCommands(input, createGrid, gridContainer);
     };
 });

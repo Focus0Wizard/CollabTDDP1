@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador de Autitos</title>
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(10, 50px);
+            grid-template-rows: repeat(10, 50px);
+            gap: 1px;
+        }
+        .cell {
+            width: 50px;
+            height: 50px;
+            background-color: lightgray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .car {
+            background-color: red;
+        }
+    </style>
 </head>
 <body>
     <h1>Simulador de Autitos</h1>
@@ -13,6 +33,9 @@
     <button id="executeButton">Ejecutar</button>
     
     <p id="output">Posición Final: </p>
+
+    <h2> Movimiento del Auto </h2>
+    <div class="grid" id="grid-container"></div>
     
     <script type="module" src="./src/simulator.js"></script>
 </body>
