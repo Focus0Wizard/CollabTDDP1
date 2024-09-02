@@ -1,5 +1,3 @@
-import { createGrid } from './createGrid.js'
-import { moveCar } from './moveCar.js';
 
 export const executeCommands = (input, createGrid, moveCar, gridContainer) => {
     const regex = /^(\d+,\d+)\/(\d+),(\d+)([NSEO])\/([IDAS]*)$/;
@@ -47,16 +45,3 @@ export const executeCommands = (input, createGrid, moveCar, gridContainer) => {
     }
     return `${x},${y}${direction}`;
 }
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const gridContainer = document.getElementById('grid-container');
-
-    document.getElementById('executeButton').onclick = () => {
-        const input = document.getElementById('commandInput').value;
-        const result = executeCommands(input, createGrid, moveCar, gridContainer); 
-
-        document.getElementById('output').innerText = `Posición Final: ${result}`;   
-    };
-
-});
