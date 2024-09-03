@@ -84,3 +84,42 @@ describe('Simulador de Autitos', () => {
         expect(global.alert).toHaveBeenCalledWith('Formato de comando inválido. Debe ser "TamanioGrilla/PosicionInicial/Comandos".');
     });
 });
+
+test('El botón Izquierda debería girar el auto hacia la izquierda', () => {
+    currentX = 2;
+    currentY = 2;
+    currentDirection = 'N';
+    manualMove('I');
+    expect(currentDirection).toBe('O');
+});
+
+test('El botón Derecha debería girar el auto hacia la derecha', () => {
+    currentX = 2;
+    currentY = 2;
+    currentDirection = 'N';
+    manualMove('D');
+    expect(currentDirection).toBe('E');
+});
+
+test('El botón Avanzar debería mover el auto hacia adelante', () => {
+    currentX = 2;
+    currentY = 2;
+    currentDirection = 'N';
+    manualMove('A');
+    expect(currentX).toBe(2);
+    expect(currentY).toBe(3);
+});
+
+test('El historial de movimientos debería actualizarse correctamente', () => {
+    updateHistory('2,2N');
+    const historyList = document.getElementById('movementHistory');
+    expect(historyList.children.length).toBe(1);
+    expect(historyList.children[0].textContent).toBe('2,2N');
+});
+
+test('El botón de reinicio debería limpiar la grilla y el historial', () => {
+    resetSimulator();
+    expect(document.getElementById('grid-container').innerHTML).toBe('');
+    expect(document.getElementById('movementHistory').innerHTML).toBe('');
+    expect(document.getElementById('output').innerText).toBe('Posición Final: ');
+});

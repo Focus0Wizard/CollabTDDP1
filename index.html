@@ -23,6 +23,12 @@
         .car {
             background-color: red;
         }
+        .controls {
+            margin-top: 20px;
+        }
+        #history {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -31,11 +37,24 @@
     <label for="commandInput">Ingrese los comandos:</label>
     <input type="text" id="commandInput">
     <button id="executeButton">Ejecutar</button>
+    <button id="resetButton">Reiniciar</button>
     
     <p id="output">Posición Final: </p>
 
-    <h2> Movimiento del Auto </h2>
+    <h2>Movimiento del Auto</h2>
     <div class="grid" id="grid-container"></div>
+
+    <div class="controls">
+        <h3>Controles Manuales</h3>
+        <button id="leftButton">Izquierda</button>
+        <button id="rightButton">Derecha</button>
+        <button id="advanceButton">Avanzar</button>
+    </div>
+
+    <div id="history">
+        <h3>Historial de Movimientos</h3>
+        <ul id="movementHistory"></ul>
+    </div>
     
     <script type="module" src="./script.js"></script>
 </body>
