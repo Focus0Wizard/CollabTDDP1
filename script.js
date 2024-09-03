@@ -1,5 +1,5 @@
-import { createGrid, moveCar, executeCommands, manualMove } from './src/index.js';
-import {parseFinalPosition, parseGridSize} from './src/hooks/hooks.js'
+import { createGrid, moveCar, executeCommands, resetSimulator, manualMove } from './src//components/index';
+import {parseFinalPosition,parseGridSize} from './src/hooks/hooks'
 
 let currentX, currentY, currentDirection, gridSize, gridContainer;
 
@@ -12,9 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (result) {
             [currentX, currentY, currentDirection] = parseFinalPosition(result);
-            gridSize = parseGridSize(input);
+            gridSize = parseGridSize(input); // Asegúrate de que se inicializa aquí
             document.getElementById('output').innerText = `Posición Final: ${result}`;
-
         }
     };
 

@@ -53,4 +53,7 @@ function resetSimulator() {
     currentX = null;
     currentY = null;
     currentDirection = null;
+    gridSize = null;
 }
+
+export {resetSimulator}

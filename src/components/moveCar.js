@@ -8,6 +8,10 @@ export const moveCar = (x, y, gridSize) => {
     }
 }
 
+let currentX, currentY, currentDirection
+let gridSize = { maxX: 0, maxY: 0 };
+
+
 function manualMove(command) {
     const directions = ['N', 'E', 'S', 'O'];
     const movements = {
@@ -31,7 +35,7 @@ function manualMove(command) {
         }
     }
 
-    moveCar(currentX, currentY, gridSize.maxY + 1);
+    moveCar(currentX, currentY, gridSize.maxY++);
     updateHistory(`${currentX},${currentY}${currentDirection}`);
 }
 
