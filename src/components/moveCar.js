@@ -41,3 +41,5 @@ function updateHistory(move) {
     listItem.textContent = move;
     historyList.appendChild(listItem);
 }
+
+export {manualMove}
