@@ -46,6 +46,11 @@ export const executeCommands = (input, createGrid, moveCar, gridContainer) => {
     return `${x},${y}${direction}`;
 }
 
+let currentX = null;
+let currentY = null;
+let currentDirection = null;
+let gridSize = null;
+
 function resetSimulator() {
     document.getElementById('grid-container').innerHTML = '';
     document.getElementById('movementHistory').innerHTML = '';

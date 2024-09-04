@@ -1,4 +1,4 @@
-import { createGrid, moveCar, executeCommands } from './index';
+import { createGrid, moveCar, executeCommands, manualMove, updateHistory, resetSimulator } from './index';
 
 
 document.body.innerHTML = '<div id="grid-container"></div>';
@@ -86,31 +86,39 @@ describe('Simulador de Autitos', () => {
 });
 
 test('El botón Izquierda debería girar el auto hacia la izquierda', () => {
-    currentX = 2;
-    currentY = 2;
-    currentDirection = 'N';
-    manualMove('I');
-    expect(currentDirection).toBe('O');
+    let currentX = 0;
+    let currentY = 0;
+    let currentDirection = 'N';
+    let gridSize = { maxX: 5, maxY: 5 };
+
+    const result = manualMove('I', currentX, currentY, currentDirection, gridSize);
+    expect(result.currentDirection).toBe('O');
 });
 
 test('El botón Derecha debería girar el auto hacia la derecha', () => {
-    currentX = 2;
-    currentY = 2;
-    currentDirection = 'N';
-    manualMove('D');
-    expect(currentDirection).toBe('E');
+    let currentX = 0;
+    let currentY = 0;
+    let currentDirection = 'N';
+    let gridSize = { maxX: 5, maxY: 5 };
+
+    const result = manualMove('D', currentX, currentY, currentDirection, gridSize);
+    expect(result.currentDirection).toBe('E');
 });
 
 test('El botón Avanzar debería mover el auto hacia adelante', () => {
-    currentX = 2;
-    currentY = 2;
-    currentDirection = 'N';
-    manualMove('A');
-    expect(currentX).toBe(2);
-    expect(currentY).toBe(3);
+    let currentX = 2;
+    let currentY = 2;
+    let currentDirection = 'N';
+    let gridSize = { maxX: 5, maxY: 5 };
+
+    const result = manualMove('A', currentX, currentY, currentDirection, gridSize);
+    expect(result.currentX).toBe(2);
+    expect(result.currentY).toBe(3);
 });
 
 test('El historial de movimientos debería actualizarse correctamente', () => {
+    document.body.innerHTML = '<ul id="movementHistory"></ul>'; // Crear un contenedor de historial
+
     updateHistory('2,2N');
     const historyList = document.getElementById('movementHistory');
     expect(historyList.children.length).toBe(1);
@@ -118,6 +126,11 @@ test('El historial de movimientos debería actualizarse correctamente', () => {
 });
 
 test('El botón de reinicio debería limpiar la grilla y el historial', () => {
+    document.body.innerHTML = `
+        <div id="grid-container"></div>
+        <ul id="movementHistory"></ul>
+        <div id="output"></div>
+    `;
     resetSimulator();
     expect(document.getElementById('grid-container').innerHTML).toBe('');
     expect(document.getElementById('movementHistory').innerHTML).toBe('');

@@ -1,7 +1,7 @@
-import { createGrid, moveCar, executeCommands, resetSimulator, manualMove } from './src//components/index';
-import {parseFinalPosition,parseGridSize} from './src/hooks/hooks'
+import { createGrid, moveCar, executeCommands, resetSimulator, manualMove } from './src/components/index';
+import { parseFinalPosition, parseGridSize } from './src/hooks/hooks';
 
-let currentX, currentY, currentDirection, gridSize, gridContainer;
+let gridSize, gridContainer, currentX, currentY, currentDirection;
 
 document.addEventListener('DOMContentLoaded', () => {
     gridContainer = document.getElementById('grid-container');
@@ -12,13 +12,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (result) {
             [currentX, currentY, currentDirection] = parseFinalPosition(result);
-            gridSize = parseGridSize(input); // Asegúrate de que se inicializa aquí
+            gridSize = parseGridSize(input);
             document.getElementById('output').innerText = `Posición Final: ${result}`;
         }
     };
 
     document.getElementById('resetButton').onclick = resetSimulator;
-    document.getElementById('leftButton').onclick = () => manualMove('I');
-    document.getElementById('rightButton').onclick = () => manualMove('D');
-    document.getElementById('advanceButton').onclick = () => manualMove('A');
+
+    document.getElementById('leftButton').onclick = () => {
+        const result = manualMove('I', currentX, currentY, currentDirection, gridSize);
+        currentX = result.currentX;
+        currentY = result.currentY;
+        currentDirection = result.currentDirection;
+    };
+
+    document.getElementById('rightButton').onclick = () => {
+        const result = manualMove('D', currentX, currentY, currentDirection, gridSize);
+        currentX = result.currentX;
+        currentY = result.currentY;
+        currentDirection = result.currentDirection;
+    };
+
+    document.getElementById('advanceButton').onclick = () => {
+        const result = manualMove('A', currentX, currentY, currentDirection, gridSize);
+        currentX = result.currentX;
+        currentY = result.currentY;
+        currentDirection = result.currentDirection;
+    };
 });

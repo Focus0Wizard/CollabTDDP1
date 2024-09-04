@@ -8,11 +8,7 @@ export const moveCar = (x, y, gridSize) => {
     }
 }
 
-let currentX, currentY, currentDirection
-let gridSize = { maxX: 0, maxY: 0 };
-
-
-function manualMove(command) {
+function manualMove(command, currentX, currentY, currentDirection, gridSize) {
     const directions = ['N', 'E', 'S', 'O'];
     const movements = {
         'N': { dx: 0, dy: 1 },
@@ -28,22 +24,28 @@ function manualMove(command) {
     } else if (command === 'A') {
         const newX = currentX + movements[currentDirection].dx;
         const newY = currentY + movements[currentDirection].dy;
-
         if (newX >= 0 && newX <= gridSize.maxX && newY >= 0 && newY <= gridSize.maxY) {
             currentX = newX;
             currentY = newY;
         }
     }
 
-    moveCar(currentX, currentY, gridSize.maxY++);
+    moveCar(currentX, currentY, gridSize.maxY);
     updateHistory(`${currentX},${currentY}${currentDirection}`);
+    
+    return { currentX, currentY, currentDirection };
 }
+
 
 function updateHistory(move) {
     const historyList = document.getElementById('movementHistory');
-    const listItem = document.createElement('li');
-    listItem.textContent = move;
-    historyList.appendChild(listItem);
+    if (historyList) {
+        const listItem = document.createElement('li');
+        listItem.textContent = move;
+        historyList.appendChild(listItem);
+    } else {
+        console.error('Elemento historyList no encontrado.');
+    }
 }
 
-export {manualMove}
+export {manualMove, updateHistory}
