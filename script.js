@@ -1,5 +1,5 @@
 import { createGrid, moveCar, executeCommands, resetSimulator, manualMove } from './src/components/index';
-import { parseFinalPosition, parseGridSize } from './src/hooks/hooks';
+import { parseFinalPosition, parseGridSize } from './src/helper/helpers';
 
 let gridSize, gridContainer, currentX, currentY, currentDirection;
 

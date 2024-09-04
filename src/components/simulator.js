@@ -51,7 +51,7 @@ let currentY = null;
 let currentDirection = null;
 let gridSize = null;
 
-function resetSimulator() {
+export const  resetSimulator = () => {
     document.getElementById('grid-container').innerHTML = '';
     document.getElementById('movementHistory').innerHTML = '';
     document.getElementById('output').innerText = 'Posición Final: ';
@@ -60,5 +60,3 @@ function resetSimulator() {
     currentDirection = null;
     gridSize = null;
 }
-
-export {resetSimulator}

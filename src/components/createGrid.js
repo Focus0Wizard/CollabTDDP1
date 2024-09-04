@@ -1,4 +1,4 @@
-let  gridSize
+let  gridSize;
 
 export const createGrid = (columns, rows, gridContainer) => {
     gridSize = { maxX: columns - 1, maxY: rows - 1 };  // Actualiza gridSize

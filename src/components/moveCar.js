@@ -8,7 +8,7 @@ export const moveCar = (x, y, gridSize) => {
     }
 }
 
-function manualMove(command, currentX, currentY, currentDirection, gridSize) {
+export const manualMove = (command, currentX, currentY, currentDirection, gridSize) => {
     const directions = ['N', 'E', 'S', 'O'];
     const movements = {
         'N': { dx: 0, dy: 1 },
@@ -36,8 +36,7 @@ function manualMove(command, currentX, currentY, currentDirection, gridSize) {
     return { currentX, currentY, currentDirection };
 }
 
-
-function updateHistory(move) {
+export const updateHistory = move => {
     const historyList = document.getElementById('movementHistory');
     if (historyList) {
         const listItem = document.createElement('li');
@@ -47,5 +46,3 @@ function updateHistory(move) {
         console.error('Elemento historyList no encontrado.');
     }
 }
-
-export {manualMove, updateHistory}
